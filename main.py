@@ -23,11 +23,11 @@ from flet import (
 import locale
 
 # Set locale for number formatting
-locale.setlocale(locale.LC_ALL, "en_US.UTF-8")
+locale.setlocale(locale.LC_ALL, "nl_NL.UTF-8")
 
 
 def format_currency(value):
-    return locale.currency(value, grouping=True, symbol="€")
+    return f"€{locale.format_string('%d', value, grouping=True)}"
 
 
 def main(page: Page):
