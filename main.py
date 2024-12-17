@@ -27,7 +27,13 @@ locale.setlocale(locale.LC_ALL, "nl_NL.UTF-8")
 
 
 def format_currency(value):
-    return f"€{locale.format_string('%d', value, grouping=True)}"
+    # Format the number manually with thousands separator and 2 decimals
+    formatted_value = f"{value:,.2f}"
+    # Replace default separators (commas and periods) for European style
+    formatted_value = (
+        formatted_value.replace(",", "X").replace(".", ",").replace("X", ".")
+    )
+    return f"€{formatted_value}"
 
 
 def main(page: Page):
