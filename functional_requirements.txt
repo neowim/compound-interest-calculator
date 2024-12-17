@@ -1,0 +1,28 @@
+Compound Interest Calculator - Functional Requirements
+
+1. Purpose:
+- Calculate and visualize compound interest over time with monthly contributions
+- Provide detailed monthly breakdown of savings growth
+
+2. Core Features:
+- Input fields for:
+  * Start and end dates
+  * Initial investment amount
+  * Annual interest rate
+  * Monthly contribution amount
+- Calculate and display:
+  * Total interest earned
+  * Final balance
+  * Monthly breakdown table showing:
+    - Month/Year
+    - Interest earned
+    - Contribution amount
+    - End balance
+
+3. Technical Requirements:
+- Python 3.13.1
+- GUI implementation using Flet framework
+- Date handling with datetime and dateutil
+- Data manipulation with pandas
+- Responsive layout
+- Error handling and validation

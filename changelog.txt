@@ -1,0 +1,94 @@
+2024-03-14 15:00:00 - Initial project setup
+- Created main.py with compound interest calculator implementation
+- Added requirements.txt with necessary dependencies
+- Created .envrc for Python environment configuration
+- Added functional requirements documentation
+
+2024-03-14 15:15:00 - Fixed .envrc configuration
+- Added shell directive to .envrc to resolve linter error
+
+2024-03-14 15:20:00 - Fixed Flet compatibility issue
+- Updated NumberBox to Number to match current Flet API
+
+2024-03-14 15:25:00 - Fixed another Flet compatibility issue
+- Updated Snackbar to SnackBar to match current Flet API
+
+2024-03-14 15:30:00 - Fixed DatePicker implementation
+- Replaced direct DatePicker usage with TextField + DatePicker combination
+- Added date selection handlers and overlay configuration
+
+2024-03-14 15:35:00 - Fixed date handling in calculate function
+- Updated date validation and conversion logic
+- Added null checks for numeric inputs
+
+2024-03-14 15:40:00 - Fixed Number control value handling
+- Added explicit float conversion for numeric inputs
+- Improved error handling for invalid numeric values
+
+2024-03-14 15:45:00 - Replaced Number controls with TextField
+- Switched to TextField with numeric keyboard for better compatibility
+- Updated value handling for numeric inputs
+
+2024-03-14 15:50:00 - Fixed DataTable configuration
+- Removed unsupported scroll parameters from DataTable
+- Table now uses default scrolling behavior
+
+2024-03-14 15:55:00 - Fixed layout padding
+- Replaced Column padding with Container padding
+- Added Container and padding imports
+
+2024-03-14 16:00:00 - Fixed DatePicker initialization
+- Moved DatePicker overlay setup before control usage
+- Ensures DatePickers are properly initialized
+
+2024-03-14 16:05:00 - Updated DatePicker interaction
+- Replaced deprecated pick_date() with page.overlay management
+- Added proper cleanup of DatePicker overlays after selection
+
+2024-03-14 16:10:00 - Fixed DatePicker functionality
+- Replaced overlay management with page.show_date_picker
+- Added async handlers for date selection
+- Set reasonable date range limits (2000-2050)
+- Improved date selection user experience
+
+2024-03-14 16:15:00 - Fixed DatePicker implementation
+- Removed unsupported show_date_picker approach
+- Using DatePicker control with open property
+- Added date range constraints to pickers
+- Simplified date selection update handlers
+
+2024-03-14 16:20:00 - Fixed TextField lambda expressions
+- Replaced direct attribute assignment in lambda with setattr
+- Fixed syntax errors in DatePicker open/close handling
+
+2024-03-14 16:25:00 - Improved DatePicker implementation
+- Switched to on_tap and pick_date() for date selection
+- Added hint text to date fields
+- Added dialog titles to date pickers
+- Added error text handling for date fields
+- Removed overlay management approach
+
+2024-03-14 16:30:00 - Fixed DatePicker configuration
+- Removed unsupported dialog_title parameter
+- Simplified DatePicker initialization
+- Maintained date range constraints and event handlers
+
+2024-03-14 16:35:00 - Fixed TextField event handling
+- Changed on_tap to on_click for TextField controls
+- Maintained date picker functionality
+- Fixed TextField initialization error
+
+2024-03-14 16:40:00 - Fixed DatePicker page initialization
+- Added DatePicker controls to page before use
+- Set DatePickers to invisible initially
+- Fixed "Control must be added to page first" error
+
+2024-03-14 16:45:00 - Updated DatePicker opening method
+- Replaced deprecated pick_date() with open property
+- Using recommended approach for DatePicker display
+- Fixed deprecation warning
+
+2024-03-14 16:50:00 - Fixed lambda expression syntax
+- Updated lambda expressions to use setattr() for property assignment
+- Fixed syntax errors in TextField click handlers
+- Resolved unclosed parentheses warnings
