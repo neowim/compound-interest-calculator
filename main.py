@@ -22,6 +22,13 @@ from flet import (
 )
 import locale
 
+# Set locale for number formatting
+locale.setlocale(locale.LC_ALL, "en_US.UTF-8")
+
+
+def format_currency(value):
+    return locale.currency(value, grouping=True, symbol="€")
+
 
 def main(page: Page):
     page.title = "Compound Interest Calculator"
@@ -75,7 +82,7 @@ def main(page: Page):
 
     # Define global variables for controls
     initial_amount_input = TextField(
-        label="Initial Amount ($)",
+        label="Initial Amount (€)",
         width=300,
         value="1000",
         keyboard_type="number",
@@ -87,7 +94,7 @@ def main(page: Page):
         keyboard_type="number",
     )
     monthly_contribution_input = TextField(
-        label="Monthly Contribution ($)",
+        label="Monthly Contribution (€)",
         width=300,
         value="100",
         keyboard_type="number",
@@ -98,19 +105,19 @@ def main(page: Page):
 
     # Output Texts
     total_interest_text = Text(
-        value="Total Interest Earned: $0.00", size=16, weight="bold"
+        value="Total Interest Earned: €0.00", size=16, weight="bold"
     )
     final_balance_text = Text(
-        value="Final Savings Amount: $0.00", size=16, weight="bold"
+        value="Final Savings Amount: €0.00", size=16, weight="bold"
     )
 
     # DataTable for Monthly Breakdown
     breakdown_table = DataTable(
         columns=[
             DataColumn(Text("Month")),
-            DataColumn(Text("Interest Earned ($)")),
-            DataColumn(Text("Contribution ($)")),
-            DataColumn(Text("End Balance ($)")),
+            DataColumn(Text("Interest Earned (€)")),
+            DataColumn(Text("Contribution (€)")),
+            DataColumn(Text("End Balance (€)")),
         ],
         rows=[],
         width=800,
@@ -240,9 +247,9 @@ def main(page: Page):
                 data.append(
                     {
                         "Month": current_date.strftime("%Y-%m"),
-                        "Interest Earned ($)": f"{interest:.2f}",
-                        "Contribution ($)": f"{contribution:.2f}",
-                        "End Balance ($)": f"{balance:.2f}",
+                        "Interest Earned (€)": format_currency(interest),
+                        "Contribution (€)": format_currency(contribution),
+                        "End Balance (€)": format_currency(balance),
                     }
                 )
 
@@ -258,18 +265,20 @@ def main(page: Page):
                     DataRow(
                         cells=[
                             DataCell(Text(row["Month"])),
-                            DataCell(Text(row["Interest Earned ($)"])),
-                            DataCell(Text(row["Contribution ($)"])),
-                            DataCell(Text(row["End Balance ($)"])),
+                            DataCell(Text(row["Interest Earned (€)"])),
+                            DataCell(Text(row["Contribution (€)"])),
+                            DataCell(Text(row["End Balance (€)"])),
                         ]
                     )
                 )
 
             # Update output texts
             total_interest_text.value = (
-                f"Total Interest Earned: ${total_interest:,.2f}"
+                f"Total Interest Earned: {format_currency(total_interest)}"
             )
-            final_balance_text.value = f"Final Savings Amount: ${balance:,.2f}"
+            final_balance_text.value = (
+                f"Final Savings Amount: {format_currency(balance)}"
+            )
 
             # Refresh the page to show updates
             page.update()
