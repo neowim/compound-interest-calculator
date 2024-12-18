@@ -15,7 +15,7 @@ from flet import (
     DatePicker,
     SnackBar,
     Container,
-    icons,
+    Icons,
     padding,
 )
 import locale
@@ -55,20 +55,25 @@ def main(page: Page):
     # Create TextField wrappers for the DatePickers
     start_date_field = TextField(
         label="Start Date",
-        icon=icons.DATE_RANGE,
+        icon=Icons.DATE_RANGE,
         width=300,
         read_only=True,
         hint_text="Click to select start date",
-        on_click=lambda _: start_date_picker.pick_date(),
+        on_click=lambda _: open_date_picker(start_date_picker),
     )
     end_date_field = TextField(
         label="End Date",
-        icon=icons.DATE_RANGE,
+        icon=Icons.DATE_RANGE,
         width=300,
         read_only=True,
         hint_text="Click to select end date",
-        on_click=lambda _: end_date_picker.pick_date(),
+        on_click=lambda _: open_date_picker(end_date_picker),
     )
+
+    def open_date_picker(picker):
+        page.overlay.append(picker)
+        picker.open = True
+        page.update()
 
     def update_start_date(e):
         start_date_field.value = e.control.value.strftime("%Y-%m-%d")
