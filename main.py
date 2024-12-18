@@ -174,11 +174,14 @@ def main(page: Page):
             current_date = start_date.replace(day=1)
             last_date_of_investment = end_date
 
+            def get_first_day_of_month(date):
+                return date.replace(day=1)
+
             # Iterate through each month until the end date
             while current_date <= last_date_of_investment:
                 # Calculate days in the month
                 last_day_of_current_month = (
-                    current_date.replace(day=1)
+                    get_first_day_of_month(current_date)
                     + relativedelta(months=1)
                     - datetime.timedelta(days=1)
                 )
@@ -202,7 +205,7 @@ def main(page: Page):
                     and current_date.month == end_date.month
                 ):
                     days_invested = (
-                        end_date - current_date.replace(day=1)
+                        end_date - get_first_day_of_month(current_date)
                     ).days
                     interest = (
                         balance
@@ -219,31 +222,21 @@ def main(page: Page):
                 contribution = 0.0
                 contribution_date = current_date.replace(day=23)
 
-                if (
+                is_contribution_month = (
                     start_date <= contribution_date <= end_date
                     and (
-                        (
-                            current_date.year == start_date.year
-                            and current_date.month == start_date.month
-                            and start_date.day <= 23
-                        )
-                        or (
-                            current_date.year != start_date.year
-                            or current_date.month != start_date.month
-                        )
+                        current_date.year != start_date.year
+                        or current_date.month != start_date.month
+                        or start_date.day <= 23
                     )
                     and (
-                        (
-                            current_date.year != end_date.year
-                            or current_date.month != end_date.month
-                        )
-                        or (
-                            current_date.year == end_date.year
-                            and current_date.month == end_date.month
-                            and end_date.day >= 23
-                        )
+                        current_date.year != end_date.year
+                        or current_date.month != end_date.month
+                        or end_date.day >= 23
                     )
-                ):
+                )
+
+                if is_contribution_month:
                     contribution = monthly_contribution
                     balance += contribution
 
@@ -258,7 +251,7 @@ def main(page: Page):
                 )
 
                 # Move to the next month safely
-                current_date = current_date.replace(day=1) + relativedelta(
+                current_date = get_first_day_of_month(current_date) + relativedelta(
                     months=1
                 )
 
@@ -290,6 +283,12 @@ def main(page: Page):
         except ValueError as ve:
             # Show a Snackbar with the error message
             page.snack_bar = SnackBar(Text(str(ve)), bgcolor="red")
+            page.snack_bar.open = True
+            page.update()
+        except TypeError as te:
+            page.snack_bar = SnackBar(
+                Text(f"Type error: {str(te)}"), bgcolor="red"
+            )
             page.snack_bar.open = True
             page.update()
         except Exception as e:
