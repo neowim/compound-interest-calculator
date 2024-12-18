@@ -14,9 +14,7 @@ from flet import (
     DataCell,
     DatePicker,
     SnackBar,
-    ScrollMode,
     Container,
-    alignment,
     icons,
     padding,
 )
