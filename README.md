@@ -59,12 +59,18 @@ provides a detailed monthly breakdown of savings growth.
 
 ## Project Structure
 
-- [main.py](http://_vscodecontentref_/0): Main application file with the compound interest calculator implementation.
-- [requirements.txt](http://_vscodecontentref_/1): List of dependencies required for the project.
-- [.envrc](http://_vscodecontentref_/2): Environment configuration for the project.
-- [functional_requirements.txt](http://_vscodecontentref_/3): Functional requirements documentation.
-- [settings.json](http://_vscodecontentref_/4): VS Code settings for the project.
-- [changelog.txt](http://_vscodecontentref_/5): Project changelog documenting changes and updates.
+- [main.py](https://github.com/neowim/compound-interest-calculator/blob/main/main.py): Main application file with the
+    compound interest calculator implementation.
+- [requirements.txt](https://github.com/neowim/compound-interest-calculator/blob/main/requirements.txt): List of
+    dependencies required for the project.
+- [.envrc](https://github.com/neowim/compound-interest-calculator/blob/main/.envrc): Environment configuration for the
+    project.
+- [functional_requirements.txt](https://github.com/neowim/compound-interest-calculator/blob/main/functional_requirements.txt):
+    Functional requirements documentation.
+- [settings.json](https://github.com/neowim/compound-interest-calculator/blob/main/settings.json): VS Code settings
+    for the project.
+- [changelog.txt](https://github.com/neowim/compound-interest-calculator/blob/main/changelog.txt): Project changelog
+    documenting changes and updates.
 
 ## Contributing
 
